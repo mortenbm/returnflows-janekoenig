@@ -1,0 +1,8 @@
+query ($id: ID!) {
+    node(id: $id) {
+        ... on BulkOperation {
+            url
+            partialDataUrl
+        }
+    }
+}

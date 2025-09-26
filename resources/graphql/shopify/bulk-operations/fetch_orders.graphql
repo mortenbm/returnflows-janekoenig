@@ -1,0 +1,148 @@
+mutation {
+    bulkOperationRunQuery(
+        query: """
+        {
+            orders ___FILTER___ {
+                edges {
+                    node {
+                        id
+                        name
+                        email
+                        displayFulfillmentStatus
+                        currencyCode
+                        currentSubtotalPriceSet {
+                            shopMoney {
+                                amount
+                            }
+                        }
+                        currentTotalDiscountsSet {
+                            shopMoney {
+                                amount
+                            }
+                        }
+                        currentTotalTaxSet {
+                            shopMoney {
+                                amount
+                            }
+                        }
+                        currentTotalPriceSet {
+                            shopMoney {
+                                amount
+                            }
+                        }
+                        currentShippingPriceSet {
+                            shopMoney {
+                                amount
+                            }
+                        }
+                        tags
+                        riskLevel
+                        clientIp
+                        note
+                        createdAt
+                        updatedAt
+                        lineItems {
+                            edges {
+                                node {
+                                    id
+                                    sku
+                                    title
+                                    quantity
+                                    originalUnitPriceSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    taxLines {
+                                        price
+                                        rate
+                                    }
+                                    totalDiscountSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    originalTotalSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        giftCardId: metafield(namespace: "returnflows", key: "giftcard_id") {
+                            value
+                        }
+                        giftCardSkuList: metafield(namespace: "returnflows", key: "giftcard_actions_sku") {
+                            value
+                        }
+                        shippingAddress {
+                            firstName
+                            lastName
+                            address1
+                            address2
+                            phone
+                            city
+                            province
+                            zip
+                            country
+                            company
+                        }
+                        billingAddress {
+                            firstName
+                            lastName
+                            address1
+                            address2
+                            phone
+                            city
+                            province
+                            zip
+                            country
+                            company
+                        }
+                        transactions {
+                            id
+                            status
+                            formattedGateway
+                            createdAt
+                            amountSet {
+                                shopMoney {
+                                    amount
+                                    currencyCode
+                                }
+                            }
+                        }
+                        shippingLine {
+                            code
+                            source
+                            title
+                        }
+                        fulfillments {
+                            id
+                        }
+                        returns {
+                            edges {
+                                node {
+                                    id
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        """
+    ) {
+        bulkOperation {
+            id
+            status
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}

@@ -1,0 +1,12 @@
+mutation OrderUpdate($input: OrderInput!) {
+    orderUpdate(input: $input) {
+        order {
+            id
+            note
+        }
+        userErrors {
+            field
+            message
+        }
+    }
+}

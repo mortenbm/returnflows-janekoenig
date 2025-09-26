@@ -1,0 +1,11 @@
+query ($id: ID!){
+    giftCard(id: $id) {
+        id
+        balance {
+            amount
+            currencyCode
+        }
+        createdAt
+        note
+    }
+}

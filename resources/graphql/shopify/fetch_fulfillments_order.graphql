@@ -1,0 +1,47 @@
+query ($id: ID!){
+    order(id: $id) {
+        fulfillments {
+            id
+            name
+            displayStatus
+            deliveredAt
+            estimatedDeliveryAt
+            createdAt
+            updatedAt
+            fulfillmentLineItems(first: 100) {
+                nodes {
+                    lineItem {
+                        id
+                        sku
+                        title
+                        quantity
+                        originalUnitPriceSet {
+                            shopMoney {
+                                amount
+                                currencyCode
+                            }
+                        }
+                        totalDiscountSet {
+                            shopMoney {
+                                amount
+                                currencyCode
+                            }
+                        }
+                        originalTotalSet {
+                            shopMoney {
+                                amount
+                                currencyCode
+                            }
+                        }
+                    }
+                    originalTotalSet {
+                        shopMoney {
+                            amount
+                            currencyCode
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

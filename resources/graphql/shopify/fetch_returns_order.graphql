@@ -1,0 +1,138 @@
+query ($id: ID!){
+    order(id: $id) {
+        returns(first: 100) {
+            nodes {
+                id
+                name
+                status
+                returnShippingFees {
+                    amountSet {
+                        shopMoney {
+                            amount
+                            currencyCode
+                        }
+                    }
+                }
+                refunds(first: 10) {
+                    edges {
+                        node {
+                            refundShippingLines(first: 10) {
+                                edges {
+                                    node {
+                                        id
+                                        subtotalAmountSet {
+                                            shopMoney {
+                                                amount
+                                                currencyCode
+                                            }
+                                        }
+                                        taxAmountSet {
+                                            shopMoney {
+                                                amount
+                                                currencyCode
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                exchangeLineItems(first: 100) {
+                    edges {
+                        node {
+                            id
+                            lineItem {
+                                id
+                                sku
+                                title
+                                quantity
+                                originalUnitPriceSet {
+                                    shopMoney {
+                                        amount
+                                        currencyCode
+                                    }
+                                }
+                                totalDiscountSet {
+                                    shopMoney {
+                                        amount
+                                        currencyCode
+                                    }
+                                }
+                                originalTotalSet {
+                                    shopMoney {
+                                        amount
+                                        currencyCode
+                                    }
+                                }
+                                variant {
+                                    id
+                                    title
+                                    inventoryItem {
+                                        measurement {
+                                            weight {
+                                                unit
+                                                value
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                returnLineItems(first: 100) {
+                    nodes {
+                        ... on ReturnLineItem {
+                            quantity
+                            fulfillmentLineItem {
+                                lineItem {
+                                    id
+                                    sku
+                                    title
+                                    quantity
+                                    originalUnitPriceSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    discountedUnitPriceSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    discountedUnitPriceAfterAllDiscountsSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    discountedTotalSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    totalDiscountSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                    originalTotalSet {
+                                        shopMoney {
+                                            amount
+                                            currencyCode
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
