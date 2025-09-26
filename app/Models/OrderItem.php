@@ -23,6 +23,11 @@ class OrderItem extends Model
         'total',
     ];
 
+    public function getcurrencyAttribute(): string
+    {
+       return  $this->order->currency;
+    }
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);

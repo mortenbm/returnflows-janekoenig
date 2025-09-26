@@ -25,6 +25,11 @@ class OrderReturnItem extends Model
         'total',
     ];
 
+    public function getcurrencyAttribute(): string
+    {
+       return  $this->orderReturn->order->currency;
+    }
+
     public function orderReturn(): BelongsTo
     {
         return $this->belongsTo(OrderReturn::class, 'return_id');

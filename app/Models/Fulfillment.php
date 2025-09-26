@@ -28,6 +28,11 @@ class Fulfillment extends Model
         'updated_at',
     ];
 
+    public function getcurrencyAttribute(): string
+    {
+       return  $this->order->currency;
+    }
+
     public function items(): HasMany
     {
         return $this->hasMany(FulfillmentItem::class, 'fulfillment_id');

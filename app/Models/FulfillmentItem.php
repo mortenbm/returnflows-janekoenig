@@ -27,6 +27,11 @@ class FulfillmentItem extends Model
         'updated_at',
     ];
 
+    public function getcurrencyAttribute(): string
+    {
+       return  $this->fulfillment->order->currency;
+    }
+
     public function fulfillment(): BelongsTo
     {
         return $this->belongsTo(Fulfillment::class, 'fulfillment_id');
